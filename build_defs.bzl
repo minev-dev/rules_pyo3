@@ -24,7 +24,7 @@ def pyo3_extension(
     name_rs = name + "_rs"
     name_so = name + ".so"
 
-    rust_library(
+    rust_binary(
         name = name_rs,
         deps = ["@rules_pyo3//:pyo3"] + deps,
         crate_type = "cdylib",
