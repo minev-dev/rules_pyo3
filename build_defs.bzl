@@ -1,7 +1,7 @@
 """Build rules for PyO3"""
 
-load("@rules_rust//rust:defs.bzl", "rust_library")
-load("@rules_python//python:defs.bzl", "py_binary")
+load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("@rules_python//python:defs.bzl", "py_library")
 
 def pyo3_extension(
         name,
@@ -40,7 +40,7 @@ def pyo3_extension(
         cmd = "cp $< $@",
     )
 
-    py_binary(
+    rust_binary(
         name = name,
         srcs = py_srcs,
         data = [name_so],
