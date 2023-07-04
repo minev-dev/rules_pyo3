@@ -1,6 +1,6 @@
 """Build rules for PyO3"""
 
-load("@rules_rust//rust:defs.bzl", "rust_binary")
+load("@rules_rust//rust:defs.bzl", "rust_library")
 load("@rules_python//python:defs.bzl", "py_library")
 
 def pyo3_extension(
@@ -24,10 +24,9 @@ def pyo3_extension(
     name_rs = name + "_rs"
     name_so = name + ".so"
 
-    rust_binary(
+    rust_library(
         name = name_rs,
         deps = ["@rules_pyo3//:pyo3"] + deps,
-        crate_type = "cdylib",
         visibility = ["//visibility:private"],
         **kwargs
     )
