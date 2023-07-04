@@ -1,7 +1,7 @@
 """Build rules for PyO3"""
 
 load("@rules_rust//rust:defs.bzl", "rust_library")
-load("@rules_python//python:defs.bzl", "py_library")
+load("@rules_python//python:defs.bzl", "py_binary")
 
 def pyo3_extension(
         name,
