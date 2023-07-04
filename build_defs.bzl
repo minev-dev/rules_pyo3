@@ -40,7 +40,7 @@ def pyo3_extension(
         cmd = "cp $< $@",
     )
 
-    rust_binary(
+    py_library(
         name = name,
         srcs = py_srcs,
         data = [name_so],
