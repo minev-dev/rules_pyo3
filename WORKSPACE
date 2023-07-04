@@ -18,24 +18,26 @@ http_archive(
 
 http_archive(
     name = "rules_rust",
-    sha256 = "994435ca2c874d92c169388019e04ad1c1b11649dede40180f25a15bce0b3115",
-    strip_prefix = "rules_rust-920256900c367357bf4dae5719b8ebf210e91a0f",
-    urls = [
-        # Master branch as of 2021-3-23
-        "https://github.com/bazelbuild/rules_rust/archive/920256900c367357bf4dae5719b8ebf210e91a0f.zip",
-    ],
-)
-
-http_archive(
-    name = "bazel_skylib",
-    sha256 = "9a737999532daca978a158f94e77e9af6a6a169709c0cee274f0a4c3359519bd",
-    strip_prefix = "bazel-skylib-1.0.0",
-    url = "https://github.com/bazelbuild/bazel-skylib/archive/1.0.0.tar.gz",
+    sha256 = "190b5aeba104210f8ed9b1ff595d1f459297fe32db70f0a04f5c537a13ee0602",
+    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.25.0/rules_rust-v0.24.1.tar.gz"],
 )
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
-rust_repositories(edition = "2018")
+rust_repositories(edition = "2021")
+
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "66ffd9315665bfaafc96b52278f57c7e2dd09f5ede279ea6d39b2be471e7e3aa",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
+    ],
+)
+
+load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
+bazel_skylib_workspace()
 
 #######################
 # PyO3 via Cargo-Raze #
