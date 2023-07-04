@@ -10,9 +10,10 @@ load("@bazel_skylib//lib:selects.bzl", "selects")
 
 # buildifier: disable=load
 load(
-    "@rules_rust//rust:rust.bzl",
+    "@rules_rust//rust:defs.bzl",
     "rust_binary",
     "rust_library",
+    "rust_proc_macro",
     "rust_test",
 )
 
@@ -37,11 +38,13 @@ load(
 )
 
 cargo_build_script(
-    name = "inventory_build_script",
+    name = "lock_api_build_script",
     srcs = glob(["**/*.rs"]),
     build_script_env = {
     },
     crate_features = [
+        "atomic_usize",
+        "default",
     ],
     crate_root = "build.rs",
     data = glob(["**"]),
@@ -53,38 +56,35 @@ cargo_build_script(
         "cargo-raze",
         "manual",
     ],
-    version = "0.1.10",
+    version = "0.4.10",
     visibility = ["//visibility:private"],
     deps = [
+        "@rules_pyo3__autocfg__1_1_0//:autocfg",
     ],
 )
 
-# Unsupported target "flags" with type "example" omitted
-
 rust_library(
-    name = "inventory",
+    name = "lock_api",
     srcs = glob(["**/*.rs"]),
     crate_features = [
+        "atomic_usize",
+        "default",
     ],
     crate_root = "src/lib.rs",
-    crate_type = "lib",
     data = [],
     edition = "2018",
-    proc_macro_deps = [
-        "@rules_pyo3__ctor__0_1_20//:ctor",
-        "@rules_pyo3__ghost__0_1_2//:ghost",
-        "@rules_pyo3__inventory_impl__0_1_10//:inventory_impl",
-    ],
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
+        "crate-name=lock_api",
         "manual",
     ],
-    version = "0.1.10",
+    version = "0.4.10",
     # buildifier: leave-alone
     deps = [
-        ":inventory_build_script",
+        ":lock_api_build_script",
+        "@rules_pyo3__scopeguard__1_1_0//:scopeguard",
     ],
 )

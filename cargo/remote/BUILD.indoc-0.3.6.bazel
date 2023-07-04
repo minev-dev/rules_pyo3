@@ -10,9 +10,10 @@ load("@bazel_skylib//lib:selects.bzl", "selects")
 
 # buildifier: disable=load
 load(
-    "@rules_rust//rust:rust.bzl",
+    "@rules_rust//rust:defs.bzl",
     "rust_binary",
     "rust_library",
+    "rust_proc_macro",
     "rust_test",
 )
 
@@ -33,21 +34,19 @@ licenses([
 rust_library(
     name = "indoc",
     srcs = glob(["**/*.rs"]),
-    crate_features = [
-    ],
     crate_root = "src/lib.rs",
-    crate_type = "lib",
     data = [],
     edition = "2018",
     proc_macro_deps = [
         "@rules_pyo3__indoc_impl__0_3_6//:indoc_impl",
-        "@rules_pyo3__proc_macro_hack__0_5_19//:proc_macro_hack",
+        "@rules_pyo3__proc_macro_hack__0_5_20_deprecated//:proc_macro_hack",
     ],
     rustc_flags = [
         "--cap-lints=allow",
     ],
     tags = [
         "cargo-raze",
+        "crate-name=indoc",
         "manual",
     ],
     version = "0.3.6",

@@ -10,9 +10,10 @@ load("@bazel_skylib//lib:selects.bzl", "selects")
 
 # buildifier: disable=load
 load(
-    "@rules_rust//rust:rust.bzl",
+    "@rules_rust//rust:defs.bzl",
     "rust_binary",
     "rust_library",
+    "rust_proc_macro",
     "rust_test",
 )
 
@@ -25,20 +26,17 @@ package(default_visibility = [
 ])
 
 licenses([
-    "notice",  # Apache-2.0 from expression "Apache-2.0 OR MIT"
+    "notice",  # MIT from expression "(MIT OR Apache-2.0) AND Unicode-DFS-2016"
 ])
 
 # Generated Targets
 
-# Unsupported target "example" with type "example" omitted
+# Unsupported target "xid" with type "bench" omitted
 
 rust_library(
-    name = "ctor",
+    name = "unicode_ident",
     srcs = glob(["**/*.rs"]),
-    crate_features = [
-    ],
     crate_root = "src/lib.rs",
-    crate_type = "proc-macro",
     data = [],
     edition = "2018",
     rustc_flags = [
@@ -46,12 +44,15 @@ rust_library(
     ],
     tags = [
         "cargo-raze",
+        "crate-name=unicode-ident",
         "manual",
     ],
-    version = "0.1.20",
+    version = "1.0.10",
     # buildifier: leave-alone
     deps = [
-        "@rules_pyo3__quote__1_0_9//:quote",
-        "@rules_pyo3__syn__1_0_64//:syn",
     ],
 )
+
+# Unsupported target "compare" with type "test" omitted
+
+# Unsupported target "static_size" with type "test" omitted
