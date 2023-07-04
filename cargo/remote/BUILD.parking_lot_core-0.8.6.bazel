@@ -57,7 +57,7 @@ cargo_build_script(
     deps = [
     ] + selects.with_or({
         (
-            "@rules_rust//rust/platform:x86_64-apple-darwin",
+            "@rules_rust//rust/platform:aarch64-apple-darwin",
         ): [
         ],
         "//conditions:default": [],
@@ -89,7 +89,7 @@ rust_library(
         "@rules_pyo3__smallvec__1_10_0//:smallvec",
     ] + selects.with_or({
         (
-            "@rules_rust//rust/platform:x86_64-apple-darwin",
+            "@rules_rust//rust/platform:aarch64-apple-darwin",
         ): [
             "@rules_pyo3__libc__0_2_147//:libc",
         ],

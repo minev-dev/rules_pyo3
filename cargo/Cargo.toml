@@ -31,7 +31,7 @@ pyo3 = { version = "=0.13.2", features = ["extension-module"] }
 gen_workspace_prefix = "rules_pyo3"
 # The WORKSPACE relative path to the Cargo.toml working directory.
 workspace_path = "//cargo"
-targets = ["x86_64-apple-darwin"]
+targets = ["aarch64-apple-darwin"]
 genmode = "Remote"
 # This causes aliases for dependencies to be rendered in the BUILD
 # file located next to this `Cargo.toml` file.
