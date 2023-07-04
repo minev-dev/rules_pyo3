@@ -21,13 +21,17 @@ http_archive(
 
 http_archive(
     name = "rules_rust",
-    sha256 = "190b5aeba104210f8ed9b1ff595d1f459297fe32db70f0a04f5c537a13ee0602",
-    urls = ["https://github.com/bazelbuild/rules_rust/releases/download/0.25.0/rules_rust-v0.24.1.tar.gz"],
+    sha256 = "accb5a89cbe63d55dcdae85938e56ff3aa56f21eb847ed826a28a83db8500ae6",
+    strip_prefix = "rules_rust-9aa49569b2b0dacecc51c05cee52708b7255bd98",
+    urls = [
+        # Main branch as of 2021-02-19
+        "https://github.com/bazelbuild/rules_rust/archive/9aa49569b2b0dacecc51c05cee52708b7255bd98.tar.gz",
+    ],
 )
 
 load("@rules_rust//rust:repositories.bzl", "rust_repositories")
 
-rust_repositories(edition = "2021")
+rust_repositories(edition = "2018")
 
 http_archive(
     name = "bazel_skylib",
