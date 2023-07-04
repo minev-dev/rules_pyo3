@@ -8,7 +8,7 @@ authors = ["Ryan Butler <thebutlah@gmail.com>"]
 path = "fake_lib.rs"
 
 [dependencies]
-# libc = "0.2.76"
+libc = "0.2.76"
 # parking_lot = "0.11.0"
 # ctor = "0.1"
 # indoc = "0.3.4"
