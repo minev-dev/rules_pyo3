@@ -40,7 +40,7 @@ def pyo3_extension(
         cmd = "cp $< $@",
     )
 
-    py_library(
+    py_binary(
         name = name,
         srcs = py_srcs,
         data = [name_so],
